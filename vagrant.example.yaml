@@ -1,0 +1,17 @@
+# If enabled, stdout and stderr will be written to separate logs.
+# If disabled, will do nothing, stdout and stderr will be written to dev/null
+DEBUG: false
+BOX:
+  # This name will be used for vagrant vox name (you will see it in VirtualBox interface, for example)
+  # and this name will be used for the host name.
+  NAME: "boxname.local"
+  # The amount of memory installed in this virtual machine
+  MEMORY: 1024
+  # The number of processor cores installed in this virtual machine
+  CORE: 1
+  # The type of file system to be used for the sync folder (nfs|vboxsf)
+  FS_TYPE: vboxsf
+  # Folder on the guest machine in which the project folder will be synchronized
+  SYNC_PATH: "/var/www/"
+  # The IP address of the guest machine where it will be available on the host machine
+  IP: correct_ip
