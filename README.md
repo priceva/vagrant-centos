@@ -11,7 +11,7 @@
 * Logging Vagrant provision scripts
 * Colored prompt
 * sudo
-* unzip, zip, mc, wget, nano, git
+* net-tools, unzip, zip, mc, wget, nano, git
 
 ### PHP stuff 
 
@@ -26,6 +26,10 @@
 * php-xmlrpc
 * php-bcmath
 * php-zip
+
+## MySQL stuff
+
+* Adminer 4.6.3 (multilingual)
 
 ### SSH Stuff
 
@@ -42,7 +46,7 @@
   * vagrant-reload
   * vagrant-winnfsd, if we will use Windows based host machine
 
-## Start
+## Getting started
 
 0. Create new folder for your project. Clone or download this repository into that folder.
 1. Rename `vagrant.example.yaml` to `vagrant.yaml`.
