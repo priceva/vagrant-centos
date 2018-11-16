@@ -18,6 +18,21 @@ else
     echo "==> LOG_ERROR_PATH: ${LOG_ERROR_PATH}"
 fi
 
+echo "==> Coloring nano"
+cat << EOF > ~/.nanorc
+include /usr/share/nano/html.nanorc
+include /usr/share/nano/nanorc.nanorc
+include /usr/share/nano/sh.nanorc
+include /usr/share/nano/php.nanorc
+EOF
+
+cat << EOF > home/vagrant/.nanorc
+include /usr/share/nano/html.nanorc
+include /usr/share/nano/nanorc.nanorc
+include /usr/share/nano/sh.nanorc
+include /usr/share/nano/php.nanorc
+EOF
+
 echo "==> Installing php"
 wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm 1>>${LOG_PATH} 2>>${LOG_ERROR_PATH}
 rpm -Uvh remi-release-7.rpm 1>>${LOG_PATH} 2>>${LOG_ERROR_PATH}
