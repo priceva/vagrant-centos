@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z $1 ];
+if [[ -z $1 ]]
 then
     echo "ERROR: LOG_PATH not specified in Vagrantfile"
     exit 1
@@ -9,7 +9,7 @@ else
     echo "==> LOG_PATH: ${LOG_PATH}"
 fi
 
-if [ -z $2 ];
+if [[ -z $2 ]]
 then
     echo "ERROR: LOG_ERROR_PATH not specified in Vagrantfile"
     exit 1
@@ -52,6 +52,8 @@ EOF"
 
 echo "==> Installing common utilities"
 yum -y install unzip 1>>${LOG_PATH} 2>>${LOG_ERROR_PATH}
+# netstat and other net tools
+yum -y install net-tools 1>>${LOG_PATH} 2>>${LOG_ERROR_PATH}
 yum -y install zip 1>>${LOG_PATH} 2>>${LOG_ERROR_PATH}
 yum -y install mc 1>>${LOG_PATH} 2>>${LOG_ERROR_PATH}
 yum -y install wget 1>>${LOG_PATH} 2>>${LOG_ERROR_PATH}
