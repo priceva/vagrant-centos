@@ -62,7 +62,7 @@ Vagrant.configure("2") do |config|
     s.binary     = true
     s.privileged = true
     s.path       = "vagrant-bootstrap/init.sh"
-    s.args       = "#{LOG_PATH} #{LOG_ERROR_PATH}"
+    s.args       = "--log-path #{LOG_PATH} --log-error-path #{LOG_ERROR_PATH}"
   end
 
   if Vagrant.has_plugin? 'vagrant-reload'
@@ -77,7 +77,7 @@ Vagrant.configure("2") do |config|
     s.binary     = true
     s.privileged = true
     s.path       = "vagrant-bootstrap/common.sh"
-    s.args       = "#{LOG_PATH} #{LOG_ERROR_PATH}"
+    s.args       = "--log-path #{LOG_PATH} --log-error-path #{LOG_ERROR_PATH}"
   end
 
 end

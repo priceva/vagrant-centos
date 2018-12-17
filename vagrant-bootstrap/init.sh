@@ -1,22 +1,36 @@
 #!/bin/bash
 
-if [[ -z $1 ]]
-then
-    echo "ERROR: LOG_PATH not specified in Vagrantfile"
-    exit 1
-else
-    LOG_PATH=$1;
-    echo "==> LOG_PATH: ${LOG_PATH}"
-fi
+ARGUMENT_LIST=(
+    "log-path"
+    "log-error-path"
+)
 
-if [[ -z $2 ]]
-then
-    echo "ERROR: LOG_ERROR_PATH not specified in Vagrantfile"
-    exit 1
-else
-    LOG_ERROR_PATH=$2;
-    echo "==> LOG_ERROR_PATH: ${LOG_ERROR_PATH}"
-fi
+opts=$(getopt \
+    --longoptions "$(printf "%s:," "${ARGUMENT_LIST[@]}")" \
+    --name "$(basename "$0")" \
+    --options "" \
+    -- "$@"
+)
+
+eval set --${opts}
+
+while true ; do
+    case "$1" in
+        --log-path)
+            case "$2" in
+                "") echo "ERROR: LOG_PATH not specified. Set up BOX:SYNC_PATH in config.yaml"; exit 1 ;;
+                *) LOG_PATH=$2; echo "==> LOG_PATH: ${LOG_PATH}"; shift 2 ;;
+            esac ;;
+        --log-error-path)
+            case "$2" in
+                "") echo "ERROR: LOG_ERROR_PATH not specified. Set up BOX:SYNC_PATH in config.yaml"; exit 1 ;;
+                *) LOG_ERROR_PATH=$2; echo "==> LOG_ERROR_PATH: ${LOG_ERROR_PATH}"; shift 2 ;;
+            esac ;;
+        *)
+            break
+            ;;
+    esac
+done
 
 mes="$(date +"%y-%m-%d %T")"
 printf "START: ${mes}\n\n" > ${LOG_PATH}
