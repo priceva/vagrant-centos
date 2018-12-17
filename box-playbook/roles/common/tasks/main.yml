@@ -1,0 +1,40 @@
+- name: Installing common utilites (unzip, net-tools, zip, mc, wget, nano, git)
+  yum:
+    name:
+      - unzip
+      - net-tools
+      - zip
+      - mc
+      - wget
+      - nano
+      - git
+    state: present
+
+- name: Create directory for downloads
+  file:
+    path: "{{ tmp_dir }}"
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: 0775
+    recurse: yes
+
+- name: Installing epel
+  yum:
+    name: epel-release
+    state: present
+
+- include: colored.yml
+  when: colored
+
+- include: php.yml
+  when: php
+
+- include: apache.yml
+  when: apache
+
+- include: xdebug.yml
+  when: php, xdebug
+
+- include: composer.yml
+  when: php, composer

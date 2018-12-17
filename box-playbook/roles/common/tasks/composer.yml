@@ -1,0 +1,12 @@
+- name: Downloading Composer installer
+  get_url:
+    url: "https://getcomposer.org/installer"
+    dest: "{{ tmp_dir }}/composer-setup.php"
+
+- name: Running installer
+  script: php composer-setup.php --quiet
+
+- name: Copying Composer to /usr/local/bin/
+  copy:
+    src: "{{ tmp_dir }}/composer.phar"
+    dest: "/usr/local/bin/composer"

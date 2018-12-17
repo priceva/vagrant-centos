@@ -1,0 +1,10 @@
+- name: Installing apache
+  yum:
+    name: httpd
+    state: present
+
+- name: Enabling apache autostart
+  shell: systemctl enable httpd
+
+- name: Starting web-server
+  shell: "systemctl start httpd"

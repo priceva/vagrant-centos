@@ -1,0 +1,33 @@
+- name: Downloading Xdebug
+  get_url:
+    url: "http://xdebug.org/files/xdebug-{{ xdebug_ver }}.tgz"
+    dest: "{{ tmp_dir }}/xdebug-{{ xdebug_ver }}.tgz"
+
+- name: unarchive Xdebug
+  unarchive:
+    src: "{{ tmp_dir }}/xdebug-{{ xdebug_ver }}.tgz"
+    dest: "{{ tmp_dir }}"
+    mode: 0755
+    group: vagrant
+    owner: vagrant
+
+- name: Installing php packages for phpize
+  yum:
+    enablerepo: remi,remi-php72
+    name:
+      - php-devel
+      - gcc
+    state: present
+
+- name: compiling Xdebug
+  shell: "cd {{ tmp_dir }}/xdebug-{{ xdebug_ver }}/ && phpize && ./configure && make"
+
+- name: Copying Xdebug module
+  copy:
+    src: "{{ tmp_dir }}/xdebug-{{ xdebug_ver }}/modules/xdebug.so"
+    dest: "/usr/lib64/php/modules/xdebug.so"
+
+- name: Activation of the Xdebug
+  lineinfile:
+    path: /etc/php.ini
+    line: "zend_extension = /usr/lib64/php/modules/xdebug.so"

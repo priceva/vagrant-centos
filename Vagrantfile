@@ -72,12 +72,4 @@ Vagrant.configure("2") do |config|
     abort
   end
 
-  config.vm.provision "Common", type: "shell" do |s|
-    s.keep_color = true
-    s.binary     = true
-    s.privileged = true
-    s.path       = "vagrant-bootstrap/common.sh"
-    s.args       = "--log-path #{LOG_PATH} --log-error-path #{LOG_ERROR_PATH}"
-  end
-
 end

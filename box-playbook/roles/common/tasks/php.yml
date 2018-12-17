@@ -1,0 +1,20 @@
+- name: Installing remi-release-7.rpm
+  yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state: present
+
+- name: Installing php packages
+  yum:
+    enablerepo: remi,remi-php72
+    name:
+      - php
+      - php-cli
+      - php-mysqlnd
+      - php-gd
+      - php-mbstring
+      - php-xml
+      - php-curl
+      - php-xmlrpc
+      - php-bcmath
+      - php-zip
+    state: present

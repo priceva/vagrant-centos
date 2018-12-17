@@ -1,0 +1,23 @@
+- name: colored console for all user
+  copy:
+    src: color_ps.sh
+    dest: /etc/profile.d/color_ps.sh
+    owner: vagrant
+    group: vagrant
+    mode: 0644
+
+- name: colored nano for vagrant user
+  copy:
+    src: .nanorc
+    dest: /home/vagrant/.nanorc
+    owner: vagrant
+    group: vagrant
+    mode: 0644
+
+- name: colored nano for root user
+  copy:
+    src: .nanorc
+    dest: /root/.nanorc
+    owner: root
+    group: root
+    mode: 0644

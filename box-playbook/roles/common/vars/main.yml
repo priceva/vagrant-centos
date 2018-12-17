@@ -1,0 +1,10 @@
+---
+tmp_dir: /tmp/box-ansible
+
+colored: true
+apache: true
+php: true
+composer: true
+xdebug: true
+
+xdebug_ver: 2.6.1
