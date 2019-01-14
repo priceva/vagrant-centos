@@ -4,9 +4,14 @@
     dest: "{{ tmp_dir }}/composer-setup.php"
 
 - name: Running installer
-  script: php composer-setup.php --quiet
+  shell: "php composer-setup.php --quiet"
+  args:
+    chdir: "{{ tmp_dir }}/"
 
 - name: Copying Composer to /usr/local/bin/
   copy:
     src: "{{ tmp_dir }}/composer.phar"
     dest: "/usr/local/bin/composer"
+    owner: vagrant
+    group: vagrant
+    mode: 0755
