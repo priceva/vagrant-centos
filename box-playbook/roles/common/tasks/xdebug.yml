@@ -41,5 +41,5 @@
   tags:
     - xdebug
   lineinfile:
-    path: /etc/php.ini
+    name: "/etc/php.ini"
     line: "zend_extension = /usr/lib64/php/modules/xdebug.so"
