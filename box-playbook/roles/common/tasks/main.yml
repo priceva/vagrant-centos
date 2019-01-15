@@ -11,6 +11,8 @@
     state: present
 
 - name: Create directory for downloads
+  tags:
+    - xdebug
   file:
     path: "{{ tmp_dir }}"
     state: directory
