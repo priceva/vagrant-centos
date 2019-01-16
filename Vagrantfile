@@ -11,8 +11,8 @@ SYNC_PATH = vagrant_config['BOX']['SYNC_PATH']
 IP = vagrant_config['BOX']['IP']
 
 if vagrant_config['DEBUG']
-    LOG_PATH = "#{SYNC_PATH}/vagrant.log"
-    LOG_ERROR_PATH = "#{SYNC_PATH}/vagrant_error.log"
+    LOG_PATH = "#{SYNC_PATH}/vagrant.log".gsub('//','/')
+    LOG_ERROR_PATH = "#{SYNC_PATH}/vagrant_error.log".gsub('//','/')
   else
     LOG_PATH = "/dev/null"
     LOG_ERROR_PATH = "/dev/null"
