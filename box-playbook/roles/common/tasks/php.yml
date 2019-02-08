@@ -1,9 +1,13 @@
 - name: Installing remi-release-7.rpm
+  tags:
+    - php
   yum:
     name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
     state: present
 
 - name: Installing php packages
+  tags:
+    - php
   yum:
     enablerepo: remi,remi-php72
     name:
@@ -18,3 +22,9 @@
       - php-bcmath
       - php-zip
     state: present
+
+- name: Restarting web-server
+  tags:
+    - php
+  shell: "systemctl restart httpd"
+  when: apache
