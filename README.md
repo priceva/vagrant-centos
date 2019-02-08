@@ -7,14 +7,17 @@
 * Remi repo
 * PHP 7.2
 * Apache 2.4
+* MariaDB
 * Disabled SELinux
 * Logging Vagrant provision scripts
 * Colored prompt
+* Colored nano
 * sudo
 * net-tools, unzip, zip, mc, wget, nano, git
 
 ### PHP stuff 
 
+* phpinfo
 * Composer (last actual version from getcomposer.org)
 * xdebug 2.6.1
 * php-cli
@@ -30,6 +33,9 @@
 ## MySQL stuff
 
 * Adminer 4.6.3 (multilingual)
+
+MySQL user: root
+MySQL password: root
 
 ### SSH Stuff
 
@@ -58,6 +64,28 @@
 ````bash
 sudo ansible-playbook -i /var/www/box-playbook/hosts /var/www/box-playbook/box.yml
 ````
+
+### Starting individual tasks from the playbook
+
+If we need to run any tasks from the playbook separately from the others, we can use this command:
+
+````bash
+sudo ansible-playbook -i /var/www/box-playbook/hosts /var/www/box-playbook/box.yml --tags %tag%
+````
+
+or vice versa, skipping tasks:
+
+````bash
+sudo ansible-playbook -i /var/www/box-playbook/hosts /var/www/box-playbook/box.yml --skip-tags %tag%
+````
+
+replacing `% tag%` with the task tag we need. Following tags are currently available:
+
+* php
+* xdebug
+* mariadb
+* apache
+* adminer
 
 ## Links
 [CentOS official Vagrant box ver. 7](https://app.vagrantup.com/centos/boxes/7)
