@@ -2,3 +2,4 @@ include /usr/share/nano/html.nanorc
 include /usr/share/nano/nanorc.nanorc
 include /usr/share/nano/sh.nanorc
 include /usr/share/nano/php.nanorc
+include /usr/share/nano/apache2.nanorc

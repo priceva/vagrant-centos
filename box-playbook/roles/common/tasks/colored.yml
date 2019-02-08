@@ -6,6 +6,14 @@
     group: vagrant
     mode: 0644
 
+- name: colored nano for apache2 conf files
+  copy:
+    src: apache2.nanorc
+    dest: /usr/share/nano/apache2.nanorc
+    owner: vagrant
+    group: vagrant
+    mode: 0644
+
 - name: colored nano for vagrant user
   copy:
     src: .nanorc
