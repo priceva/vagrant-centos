@@ -1,10 +1,30 @@
 - name: Installing apache
+  tags:
+    - apache
   yum:
     name: httpd
     state: present
 
 - name: Enabling apache autostart
-  shell: systemctl enable httpd
+  tags:
+    - apache
+  shell: "systemctl enable httpd"
+
+# systemctl list-units | fgrep .mount
+- name: Dirty hack
+  tags:
+    - apache
+  lineinfile:
+    path: /etc/systemd/system/multi-user.target.wants/httpd.service
+    regexp: 'WantedBy=multi-user.target'
+    line: 'WantedBy=multi-user.target var-www.mount'
+
+- name: Reenabling apache autostart
+  tags:
+    - apache
+  shell: "systemctl reenable httpd"
 
 - name: Starting web-server
+  tags:
+    - apache
   shell: "systemctl start httpd"
