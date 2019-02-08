@@ -6,6 +6,8 @@ apache: true
 php: true
 composer: true
 xdebug: true
+adminer: true
 phpinfo: true
 
 xdebug_ver: 2.6.1
+adminer_ver: 4.7.0

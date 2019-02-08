@@ -38,6 +38,9 @@
 - include: xdebug.yml
   when: php, xdebug
 
+- include: adminer.yml
+  when: adminer
+
 - include: composer.yml
   when: php, composer
 

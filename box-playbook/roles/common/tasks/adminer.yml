@@ -1,0 +1,13 @@
+- name: Downloading Adminer
+  tags:
+    - adminer
+  get_url:
+    url: "https://github.com/vrana/adminer/releases/download/v{{ adminer_ver }}/adminer-{{ adminer_ver }}-mysql-en.php"
+    dest: "{{ tmp_dir }}/adminer-{{ adminer_ver }}.php"
+
+- name: Installing Adminer
+  tags:
+    - adminer
+  copy:
+    src: "{{ tmp_dir }}/adminer-{{ adminer_ver }}.php"
+    dest: "{{ sync_dir }}/html/adminer.php"
