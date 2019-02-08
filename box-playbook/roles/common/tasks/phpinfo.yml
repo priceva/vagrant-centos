@@ -1,0 +1,4 @@
+- name: Installing phpinfo.php
+  copy:
+    src: "phpinfo.php"
+    dest: "{{ sync_dir }}/html/phpinfo.php"

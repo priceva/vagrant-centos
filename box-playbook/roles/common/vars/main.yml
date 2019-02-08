@@ -6,5 +6,6 @@ apache: true
 php: true
 composer: true
 xdebug: true
+phpinfo: true
 
 xdebug_ver: 2.6.1

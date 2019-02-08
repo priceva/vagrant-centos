@@ -40,3 +40,6 @@
 
 - include: composer.yml
   when: php, composer
+
+    - include: phpinfo.yml
+      when: phpinfo
