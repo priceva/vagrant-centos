@@ -1,3 +1,6 @@
+- name: Set up system timezone
+  shell: "timedatectl set-timezone Europe/Moscow"
+
 - name: Installing common utilites (unzip, net-tools, zip, mc, wget, nano, git)
   yum:
     name:
