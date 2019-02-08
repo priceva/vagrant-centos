@@ -1,5 +1,6 @@
 ---
-tmp_dir: /tmp/box-ansible
+tmp_dir: /tmp/box-playbook
+sync_dir: /var/www
 
 colored: true
 apache: true
