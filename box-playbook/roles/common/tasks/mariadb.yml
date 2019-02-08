@@ -1,0 +1,40 @@
+- name: Installing mariadb
+  tags:
+    - mariadb
+  yum:
+    name:
+      - mariadb-server
+      - mariadb
+
+- name: Adds Python MySQL support
+  tags:
+    - mariadb
+  yum:
+    name: MySQL-python
+    state: present
+
+- name: Starting mariadb
+  tags:
+    - mariadb
+  shell: "systemctl start mariadb"
+
+- name: Set the root password
+  tags:
+    - mariadb
+  mysql_user:
+    login_user: "root"
+    login_password: ""
+    check_implicit_admin: yes
+    name: root
+    host: "{{ item }}"
+    password: "{{ mysql_root_password }}"
+    state: present
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: Enabling mariadb autostart
+  tags:
+    - mariadb
+  shell: "systemctl enable mariadb"

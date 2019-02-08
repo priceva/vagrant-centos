@@ -47,5 +47,8 @@
 - include: composer.yml
   when: php, composer
 
-    - include: phpinfo.yml
-      when: phpinfo
+- include: phpinfo.yml
+  when: phpinfo
+
+- include: mariadb.yml
+  when: mariadb

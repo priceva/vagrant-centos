@@ -7,8 +7,11 @@ apache: true
 php: true
 composer: true
 xdebug: true
+mariadb: true
 adminer: true
 phpinfo: true
 
 xdebug_ver: 2.6.1
 adminer_ver: 4.7.0
+
+mysql_root_password: root
