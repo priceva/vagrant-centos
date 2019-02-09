@@ -86,6 +86,11 @@ replacing `% tag%` with the task tag we need. Following tags are currently avail
 * mariadb
 * apache
 * adminer
+* colored
+* composer
+* phpinfo
+
+You can also use variables in `box-playbook/roles/common/vars/main.yml` for this purpose.
 
 ## Links
 [CentOS official Vagrant box ver. 7](https://app.vagrantup.com/centos/boxes/7)
