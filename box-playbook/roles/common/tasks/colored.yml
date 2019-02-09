@@ -1,4 +1,6 @@
 - name: colored console for all user
+  tags:
+    - colored
   copy:
     src: color_ps.sh
     dest: /etc/profile.d/color_ps.sh
@@ -7,6 +9,8 @@
     mode: 0644
 
 - name: colored nano for apache2 conf files
+  tags:
+    - colored
   copy:
     src: apache2.nanorc
     dest: /usr/share/nano/apache2.nanorc
@@ -15,6 +19,8 @@
     mode: 0644
 
 - name: colored nano for vagrant user
+  tags:
+    - colored
   copy:
     src: .nanorc
     dest: /home/vagrant/.nanorc
@@ -23,6 +29,8 @@
     mode: 0644
 
 - name: colored nano for root user
+  tags:
+    - colored
   copy:
     src: .nanorc
     dest: /root/.nanorc
