@@ -1,7 +1,11 @@
 - name: Set up system timezone
+  tags:
+    - main
   shell: "timedatectl set-timezone Europe/Moscow"
 
 - name: Installing common utilites (unzip, net-tools, zip, mc, wget, nano, git)
+  tags:
+    - main
   yum:
     name:
       - unzip
@@ -25,6 +29,8 @@
     recurse: yes
 
 - name: Installing epel
+  tags:
+    - main
   yum:
     name: epel-release
     state: present
