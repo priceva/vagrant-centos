@@ -1,3 +1,4 @@
 /.vagrant
 /vagrant.yaml
 /box-playbook/box.retry
+*.ova

@@ -1,0 +1,60 @@
+- name: Downloading virtualbox repo
+  tags:
+    - virtualbox
+  get_url:
+    url: http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+    dest: /etc/yum.repos.d
+
+#- name: Adding rmp key
+#  tags:
+#    - virtualbox
+#  rpm_key:
+#    key: https://www.virtualbox.org/download/oracle_vbox.asc
+#    state: present
+#
+#- name: Installing dkms
+#  tags:
+#    - virtualbox
+#  yum:
+#    name: dkms
+#    enablerepo: epel
+#    state: present
+
+# Can not use the modern way of installation dkms package from virtualbox repo,
+# see more here: https://github.com/ansible/ansible/issues/20711
+- name: Installing dkms
+  tags:
+    - virtualbox
+  shell: "yum --enablerepo=epel -y install dkms"
+
+- name: Installing the 'Development tools' package group
+  tags:
+    - virtualbox
+  yum:
+    name: "@Development tools"
+    state: present
+
+- name: Installing kernel-devel
+  tags:
+    - virtualbox
+  yum:
+    name: kernel-devel
+    state: present
+
+- name: Installing VirtualBox
+  tags:
+    - virtualbox
+  yum:
+    name: VirtualBox-{{virutalbox_ver}}
+    state: present
+
+- name: Add users "vagrant" and "root" to vboxusers user group
+  tags:
+    - virtualbox
+  user:
+    name: "{{ item }}"
+    groups: vboxusers
+    append: yes
+  with_items:
+    - vagrant
+    - root

@@ -7,3 +7,4 @@
   become_method: sudo
   roles:
     - common
+    - virtualbox
